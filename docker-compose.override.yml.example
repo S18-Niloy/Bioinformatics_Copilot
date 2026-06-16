@@ -1,0 +1,39 @@
+# Local Development Override
+# Copy this to docker-compose.override.yml and customize for local development
+# This file is ignored by git to prevent committing secrets
+
+version: '3.8'
+
+services:
+  backend:
+    environment:
+      - ENVIRONMENT=development
+      - JWT_SECRET=dev-secret-change-in-production-minimum-32-characters-long
+      - DATABASE_URL=sqlite:///./biocopilot.db
+      - ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+      - LOG_LEVEL=DEBUG
+    # For local development, you can mount volumes for hot reloading
+    # volumes:
+    #   - ./backend:/app/backend
+
+  frontend:
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    # volumes:
+    #   - ./frontend:/app/frontend
+
+  # Optional: Add PostgreSQL for local development
+  # postgres:
+  #   image: postgres:15-alpine
+  #   environment:
+  #     POSTGRES_DB: biocopilot
+  #     POSTGRES_USER: biocopilot
+  #     POSTGRES_PASSWORD: dev-password-change-me
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #
+  # volumes:
+  #   postgres_data:

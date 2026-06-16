@@ -1,11 +1,31 @@
 FROM python:3.11-slim
+
 WORKDIR /app
-RUN apt-get update && apt-get install -y --no-install-recommends build-essential git && rm -rf /var/lib/apt/lists/*
+
+# Security: Update base packages and install only necessary tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# Copy requirements first for better caching
 COPY backend/requirements.txt /app/backend/requirements.txt
 RUN pip install --no-cache-dir -r /app/backend/requirements.txt
+
+# Copy application code
 COPY backend /app/backend
 COPY ml /app/ml
+
 WORKDIR /app/backend
+
+# Set environment for production
 ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+
+# Expose only the API port
 EXPOSE 8000
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# Security: Use exec form of CMD to ensure proper signal handling
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+

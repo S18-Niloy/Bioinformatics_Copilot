@@ -12,6 +12,23 @@ Full-stack SaaS combining:
 > All models default to **free, local, CPU-friendly** weights from HuggingFace.
 > No OpenAI / paid API keys required.
 
+> 🔒 **Security**: See [SECURITY.md](SECURITY.md) for comprehensive security guidelines and best practices.
+
+---
+
+## 🔐 Security Overview
+
+This project implements enterprise-grade security:
+- **JWT Authentication**: 15-minute access tokens + 7-day refresh tokens
+- **Password Security**: Argon2 hashing with minimum complexity requirements
+- **Input Validation**: Pydantic models enforce strict type and length validation
+- **CORS Protection**: Whitelist-based origin validation
+- **Error Handling**: Stack traces not exposed in production
+- **Database**: SQLAlchemy ORM prevents SQL injection
+- **Secrets Management**: All sensitive config via environment variables
+
+For detailed security information, see [SECURITY.md](SECURITY.md).
+
 ---
 
 ## 🗂 Project Tree
@@ -71,6 +88,18 @@ bioinformatics-copilot/
 
 ## 🚀 Running Locally (no Docker)
 
+### 0. Environment Setup
+
+Before running locally, configure your environment:
+
+```bash
+# Copy environment template
+cp .env.example .env
+
+# Edit .env with your settings (for development, defaults are fine)
+# For production, see SECURITY.md for requirements
+```
+
 ### 1. Backend (FastAPI)
 
 ```bash
@@ -112,12 +141,40 @@ Register on `/login` or POST `/api/users/register` with `{username, password}`.
 
 ## 🐳 Running with Docker
 
+### Setup
+
+```bash
+# Copy local environment override
+cp docker-compose.override.yml.example docker-compose.override.yml
+
+# (Optional) Edit docker-compose.override.yml for custom settings
+```
+
+### Run
+
 ```bash
 docker compose up --build
 ```
 
 - Frontend → http://localhost:3000
 - Backend  → http://localhost:8000
+
+### Production Deployment
+
+For production, set environment variables before deploying:
+
+```bash
+docker run \
+  --env ENVIRONMENT=production \
+  --env JWT_SECRET=$(python -c 'import secrets; print(secrets.token_urlsafe(32))') \
+  --env DATABASE_URL=postgresql://user:password@host/dbname \
+  --env ALLOWED_ORIGINS=https://yourdomain.com \
+  --env ALLOWED_HOSTS=api.yourdomain.com \
+  -p 8000:8000 \
+  bioinformatics-copilot-backend:latest
+```
+
+See [SECURITY.md](SECURITY.md) for complete production deployment guidelines.
 
 ---
 

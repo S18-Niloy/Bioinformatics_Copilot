@@ -1,0 +1,17 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+sqlalchemy==2.0.35
+python-multipart==0.0.12
+biopython==1.84
+numpy==1.26.4
+faiss-cpu==1.8.0
+sentence-transformers==3.0.1
+transformers==4.44.2
+torch==2.3.1
+torch-geometric==2.5.3
+scikit-learn==1.5.1
+argon2-cffi==23.1.0
+passlib==1.7.4

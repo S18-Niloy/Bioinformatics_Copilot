@@ -1,0 +1,20 @@
+DNA (deoxyribonucleic acid) is a double-stranded molecule composed of nucleotides containing adenine (A), thymine (T), guanine (G), and cytosine (C). A pairs with T, and G pairs with C.
+RNA (ribonucleic acid) is typically single-stranded and uses uracil (U) instead of thymine. Messenger RNA carries the genetic code from DNA to the ribosome where it is translated into protein.
+The central dogma of molecular biology states that genetic information flows from DNA to RNA to protein via transcription and translation.
+An open reading frame (ORF) is a sequence of DNA that starts with a start codon (ATG) and ends with a stop codon (TAA, TAG, TGA) without intervening stop codons.
+GC content is the percentage of guanine and cytosine bases in a DNA sequence. High GC content correlates with higher melting temperature and is common in thermophilic organisms.
+Proteins are polymers of amino acids encoded by triplets of nucleotides called codons. There are 20 standard amino acids.
+BLAST (Basic Local Alignment Search Tool) is the most widely used algorithm for searching sequence databases for similar sequences.
+Pairwise sequence alignment aligns two sequences to identify regions of similarity. Global alignment (Needleman-Wunsch) aligns the entire length; local alignment (Smith-Waterman) aligns the most similar subregions.
+Multiple sequence alignment aligns three or more sequences and is used to infer evolutionary relationships.
+Hemoglobin is the iron-containing oxygen-transport metalloprotein in red blood cells. It consists of four globin subunits (two alpha and two beta in adults).
+A gene is a sequence of DNA that encodes a functional product, usually a protein or a non-coding RNA.
+Transcription factors are proteins that bind to specific DNA sequences to control the rate of transcription of genetic information from DNA to messenger RNA.
+A graph neural network (GNN) is a class of neural network that operates on graph-structured data. GCN (Graph Convolutional Network) and GAT (Graph Attention Network) are common variants used in computational biology for protein-protein interaction prediction and drug discovery.
+Protein-protein interaction (PPI) networks model proteins as nodes and physical interactions as edges. Predicting node labels (e.g. function) is a common GNN task.
+Retrieval-augmented generation (RAG) combines a vector retriever (e.g. FAISS) with a generative language model: relevant passages are retrieved and provided as context to the LLM.
+Embeddings are dense vector representations of biological sequences (or text) such that similar inputs map to nearby vectors. Sentence-transformers and ESM protein language models are common sources.
+EGFR (Epidermal Growth Factor Receptor) is a receptor tyrosine kinase frequently mutated or overexpressed in cancers, and a major drug target.
+BRCA1 is a tumor suppressor gene; loss-of-function mutations substantially increase the risk of breast and ovarian cancer.
+Collagen is the most abundant protein in mammals and a major component of connective tissue.
+Serum albumin is the most abundant protein in human blood plasma and transports many ligands.

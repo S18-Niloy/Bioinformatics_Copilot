@@ -1,0 +1,19 @@
+services:
+  backend:
+    build: { context: ., dockerfile: Dockerfile.backend }
+    ports:
+      - "8000:8000"
+    environment:
+      - JWT_SECRET=WB6AS8uZt-KtnkrJDNy9OI_qbOIeqqHyw-yf8dBIDvZ_L3R8Kk7Gabx5FJ2CqKfJlNDgZ570gdX8GmziLxslKw
+      - DATABASE_URL=sqlite:///./biocopilot.db
+    volumes:
+      - ./biocopilot.db:/app/biocopilot.db
+
+  frontend:
+    build: { context: ., dockerfile: Dockerfile.frontend }
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend

@@ -18,3 +18,4 @@ EGFR (Epidermal Growth Factor Receptor) is a receptor tyrosine kinase frequently
 BRCA1 is a tumor suppressor gene; loss-of-function mutations substantially increase the risk of breast and ovarian cancer.
 Collagen is the most abundant protein in mammals and a major component of connective tissue.
 Serum albumin is the most abundant protein in human blood plasma and transports many ligands.
+AlphaFold is a deep learning system developed by DeepMind for predicting protein three-dimensional structure from amino acid sequence with high accuracy, enabling structure-based insights in biology and drug discovery.

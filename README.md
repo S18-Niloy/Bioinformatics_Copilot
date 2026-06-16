@@ -5,6 +5,7 @@ Full-stack SaaS combining:
 - Gene / protein sequence analysis (GC content, ORFs, translation, pairwise alignment)
 - Protein similarity search via embeddings
 - Graph Neural Network module (PyTorch Geometric, GCN on a toy protein-protein interaction graph)
+- Interactive protein graph generator on `/gnn` with selectable node count and custom protein names
 - Research-style explanation generator using a local HuggingFace LLM (flan-t5-small by default — runs on CPU)
 - Next.js frontend, FastAPI backend, JWT auth, SQLite (Postgres-ready), Docker
 
@@ -96,7 +97,14 @@ npm run dev
 
 App: http://localhost:3000
 
-### 3. Default user
+### 3. GNN Graph Generator
+Open `http://localhost:3000/gnn` and enter:
+- `Number of nodes` to control graph size
+- `Protein names` as comma-separated values to seed the graph
+
+The page generates an interactive protein graph and returns node/edge data from the backend.
+
+### 4. Default user
 
 Register on `/login` or POST `/api/users/register` with `{username, password}`.
 
@@ -124,6 +132,7 @@ docker compose up --build
 | POST   | /api/sequence/align        | Pairwise alignment                        |
 | POST   | /api/protein/similar       | Embedding similarity search               |
 | POST   | /api/gnn/predict           | GCN node-class prediction on toy PPI graph|
+| POST   | /api/gnn/graph             | Generate a custom protein graph by node count and protein names |
 
 All ML endpoints (except /users/*) require `Authorization: Bearer <jwt>`.
 

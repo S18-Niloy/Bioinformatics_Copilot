@@ -1,4 +1,4 @@
-# Bioinformatics Copilot
+# Bioinformatics Copilot (Ongoing)
 
 Full-stack SaaS combining:
 - RAG-based AI assistant (FAISS + sentence-transformers, fully local, no paid APIs)
